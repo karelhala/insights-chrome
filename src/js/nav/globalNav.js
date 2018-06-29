@@ -1,35 +1,27 @@
 export const options = Object.freeze([{
     id: 'dashboard',
-    title: 'Dashboard',
-    icon: 'fa-tachometer-alt'
+    title: 'Dashboard'
 }, {
     id: 'advisor',
-    title: 'Advisor',
-    icon: 'fa-clipboard-list'
+    title: 'Advisor'
 }, {
     id: 'security',
-    title: 'Security',
-    icon: 'fa-lock'
+    title: 'Security'
 }, {
     id: 'compliance',
-    title: 'Compliance',
-    icon: 'fa-gavel'
+    title: 'Compliance'
 }, {
     id: 'cmaas',
-    title: 'Cost Management',
-    icon: 'fa-piggy-bank'
+    title: 'Cost Management'
 }, {
     id: 'inventory',
-    title: 'Inventory',
-    icon: 'fa-database'
+    title: 'Inventory'
 }, {
     id: 'reports',
-    title: 'Reports',
-    icon: 'fa-chart-bar'
+    title: 'Reports'
 }, {
     id: 'settings',
-    title: 'Settings',
-    icon: 'fa-cog'
+    title: 'Settings'
 }]);
 
 function toNavElement(item) {
@@ -39,14 +31,9 @@ function toNavElement(item) {
         li.classList.add('active');
     }
 
-    const i = document.createElement('i');
-    i.classList.add('fas');
-    i.classList.add(item.icon);
-
     const span = document.createElement('span');
     span.textContent = item.title;
 
-    li.appendChild(i);
     li.appendChild(span);
 
     return li;

@@ -10,10 +10,10 @@
 
   i + span, span + i { @include rem('margin-left', 5px); }
 
-  i.fa-bars { color: #d1d1d1; }
+  i.fa-bars { color: #fff; }
 
   svg#insights-logo {
-    height: 15px;
+    height: 13px;
     display: inline;
     .st0 { fill: #fff; }
   }

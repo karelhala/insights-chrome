@@ -1,13 +1,17 @@
 {
-  "presets": ["es2015"],
-  "plugins": [
-    "transform-inline-environment-variables",
-    "transform-object-rest-spread",
-    "babel-plugin-syntax-dynamic-import"
-  ],
-  "env": {
-    "test": {
-      "plugins": ["babel-plugin-dynamic-import-node"]
-    }
-  }
+    "presets": [
+        [
+            "@babel/env",
+            {
+                "targets": "> 0.25%, not dead"
+            }
+        ],
+        "@babel/react",
+        "@babel/flow"
+    ],
+    "plugins": [
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-syntax-dynamic-import",
+        "lodash"
+    ]
 }

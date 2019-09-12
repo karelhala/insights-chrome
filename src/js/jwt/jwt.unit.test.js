@@ -6,7 +6,7 @@ const encodedToken      = require('../../../testdata/encodedToken.json').data;
 const decodedToken      = require('../../../testdata/decodedToken.json');
 const jwt               = require('./jwt');
 
-jest.mock('keycloak-js');
+jest.mock('@redhat-cloud-services/keycloak-js');
 jest.mock('urijs');
 
 describe('JWT', () => {

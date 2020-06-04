@@ -1,4 +1,4 @@
-import instance from '@redhat-cloud-services/frontend-components-utilities/files/interceptors';
+import instance from '@redhat-cloud-services/frontend-components-utilities/files/esm/interceptors';
 
 const obj =  {
     noAuthParam: 'noauth',

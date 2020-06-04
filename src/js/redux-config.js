@@ -2,8 +2,8 @@ import * as actionTemplates from './redux/actions';
 import chromeReducer from './redux';
 import ReducerRegistry, {
     dispatchActionsToStore
-} from '@redhat-cloud-services/frontend-components-utilities/files/ReducerRegistry';
-import MiddlewareListener from '@redhat-cloud-services/frontend-components-utilities/files/MiddlewareListener';
+} from '@redhat-cloud-services/frontend-components-utilities/files/esm/ReducerRegistry';
+import MiddlewareListener from '@redhat-cloud-services/frontend-components-utilities/files/esm/MiddlewareListener';
 import logger from 'redux-logger';
 
 const basicMiddlewares = [];

@@ -1,1 +1,1 @@
-import '@redhat-cloud-services/frontend-components-remediations/index.css';
+// import '@redhat-cloud-services/frontend-components-remediations/index.css';

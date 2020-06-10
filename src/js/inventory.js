@@ -1,9 +1,13 @@
-import setDependencies from './externalDependencies';
-
-export default (dependencies) => {
-    setDependencies(dependencies);
-
+export default () => {
     return import('./inventoryStyles').then(
-        () => import('@redhat-cloud-services/frontend-components-inventory')
+        () => Promise.all([
+            import('@redhat-cloud-services/frontend-components-inventory'),
+            import('./inventoryDetail')
+        ]).then(([data, { componentsMapper }]) => {
+            return {
+                ...data,
+                inventoryConnector: (store) => data.inventoryConnector(store, componentsMapper)
+            };
+        })
     );
 };

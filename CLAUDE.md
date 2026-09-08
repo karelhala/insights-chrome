@@ -1,19 +1,20 @@
 @AGENTS.md
 
-# Insights Chrome - AI Assistant Guidelines
+# Insights Chrome
 
-## ⚠️ CRITICAL REPOSITORY WARNING
+This is the Hybrid Cloud Console shell. Breakage takes down every HCC application.
 
-**This is the most critical component in the Red Hat Hybrid Cloud Console product.**
+Before changing a domain, read the matching file from the Documentation Index in AGENTS.md. Do not `@` import those guideline files from here — they are loaded on demand.
 
-- **ANY BREAKAGE CAN TAKE DOWN THE ENTIRE PRODUCT**
-- This repository is the "chrome wrapper" that provides the shell for ALL applications
-- Thousands of users depend on this being stable and functional
-- Test thoroughly. Never skip tests. Never take shortcuts.
+## Hard constraints
 
----
+- New features in TypeScript only (`strict`). No new JavaScript sources.
+- Auth only through ChromeAuthContext / `useChrome().auth`. Direct `react-oidc-context` or `oidc-client-ts` imports are allowed only under `src/auth/OIDCConnector/`.
+- Behavior changes under `src/` need relevant tests (Jest next to source; Cypress component for interactive UI; Playwright for shell user flows). Coverage target is 60%.
+- `src/chrome/create-chrome.ts` is the public API for 50+ apps. Signature or export changes need a `breaking-change` label and migration notes.
+- Finish with `npm run verify` (lint + CRD validate + build + unit tests). Run `npm run test:ct` / `npm run playwright` when those layers apply.
 
-## Project Overview
+## Agent-specific
 
 **Insights Chrome** is the foundational micro-frontend platform wrapper for the Red Hat Hybrid Cloud Console. It provides:
 
@@ -301,6 +302,7 @@ browser_take_screenshot()   → Visual PNG/JPEG image (for viewing only)
    ```
 
 6. **Form Filling Patterns:**
+
    ```javascript
    // Single field approach
    await browser_type({ ref: 'ref-123', text: 'value' });
@@ -932,3 +934,7 @@ Before submitting PRs, verify:
 8. **Verify before committing** - `npm run verify` must pass
 9. **Follow existing patterns** - Check similar components first
 10. **Read the docs** - Especially [docs/api.md](docs/api.md)
+
+- Dev server: `npm run dev` → https://stage.foo.redhat.com:1337. Firefox avoids self-signed cert issues; Chrome setup is in README.md.
+- Proxy a local federated app with `LOCAL_APPS` (README.md).
+- If browser / Playwright MCP tools are available, explore with accessibility snapshots first, then write the spec. Workflow: [docs/playwright-mcp.md](docs/playwright-mcp.md).

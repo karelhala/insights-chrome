@@ -10,7 +10,7 @@ enable_free_tier: true
 knowledge_base:
   code_guidelines:
     filePatterns:
-      - "docs/*-guidelines.md"
+      - 'docs/*-guidelines.md'
 
 # Exclude dependency update bots from automated reviews
 reviews:
@@ -85,7 +85,7 @@ reviews:
 
           Pass criteria:
           - If this PR changes behavior in source code files (src/**/*.{ts,tsx,js,jsx}), it MUST include relevant test evidence
-          - Test files can be: **/*.test.{ts,tsx,js}, cypress/component/**/*.cy.tsx, or playwright/e2e/**/*.spec.ts
+          - Test files can be: **/*.test.{ts,tsx,js,jsx}, cypress/component/**/*.cy.tsx, or playwright/e2e/**/*.spec.ts
           - Exception: If ONLY documentation files (.md, .txt) are changed, tests are not required
           - Exception: If ONLY configuration files are changed without logic changes, tests may be optional
           - Exception: Dependency updates (package.json, package-lock.json only) do not require tests

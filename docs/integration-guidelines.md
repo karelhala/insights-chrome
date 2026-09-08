@@ -145,17 +145,17 @@ Multiple analytics services are integrated:
 
 ## External services
 
-| Service | Role |
-|---------|------|
-| Keycloak / SSO | Auth (`sso.redhat.com`, `sso.stage.redhat.com`) resolved in `src/utils/common.ts` |
-| RBAC API | Permissions (`src/auth/fetchPermissions.ts`) |
-| Entitlements API | Bundle access (`src/auth/entitlementsApi.ts`) |
-| Host Inventory API | System inventory |
-| chrome-service-backend | Navigation, search, WebSocket |
-| Segment, Amplitude, Pendo, Intercom, Sentry | Analytics / support / errors |
-| Unleash | Feature flags |
+| Service                                     | Role                                                                              |
+| ------------------------------------------- | --------------------------------------------------------------------------------- |
+| Keycloak / SSO                              | Auth (`sso.redhat.com`, `sso.stage.redhat.com`) resolved in `src/utils/common.ts` |
+| RBAC API                                    | Permissions (`src/auth/fetchPermissions.ts`)                                      |
+| Entitlements API                            | Bundle access (`src/auth/entitlementsApi.ts`)                                     |
+| Host Inventory API                          | System inventory                                                                  |
+| chrome-service-backend                      | Navigation, search, WebSocket                                                     |
+| Segment, Amplitude, Pendo, Intercom, Sentry | Analytics / support / errors                                                      |
+| Unleash                                     | Feature flags                                                                     |
 
-Do not hardcode those hosts — use `getEnv()`, `isProd()`, `getEnvDetails()` from `src/utils/common.ts`.
+Do not hardcode service hosts. Use `getEnv()`, `isProd()`, and `getEnvDetails()` for non-SSO services. For SSO, use `loadSSOConfig()` and `resolveSSOUrl()` from `src/utils/common.ts`.
 
 Page titles: `chrome.updateDocumentTitle()` (implemented in `src/utils/common.ts`). Do not set `document.title` directly.
 

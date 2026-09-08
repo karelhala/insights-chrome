@@ -2,7 +2,7 @@
 
 ## Coverage
 
-Coverage target is **60%** (Codecov), acceptable 60–80%, with a 1% delta per PR. Jest coverage is uploaded by GitHub Actions; Cypress has separate code-coverage support. No Jest `coverageThreshold` is configured, so the percentage is not locally enforced by Jest.
+Coverage minimum is **60%** (Codecov), with a 1% delta threshold per PR. The 60–80% range controls Codecov status colors only; coverage above 80% remains compliant. Jest coverage is uploaded by GitHub Actions; Cypress has separate code-coverage support. No Jest `coverageThreshold` is configured, so the percentage is not locally enforced by Jest.
 
 | Framework  | Purpose          | Location                             | Pattern                   |
 | ---------- | ---------------- | ------------------------------------ | ------------------------- |
@@ -32,7 +32,7 @@ Place `Foo.test.tsx` beside `Foo.tsx`. There is no shared test wrapper — compo
 
 Auth mock: `jest.mock('../auth/ChromeAuthContext', ...)` with `Consumer`/`Provider`. Hydrate atoms with `useHydrateAtoms` from `jotai/utils`. Spy `window.fetch` or use `src/__mocks__/axios.js`. `react-intl` is mocked in `src/__mocks__/react-intl.js` (`defaultMessage` / `formatMessage` string).
 
-## Cypress component tests
+## Jest tests
 
 **Module Federation globals:** Tests that touch federated modules must mock webpack globals in setup:
 
@@ -129,6 +129,8 @@ npm run ci:cypress-component-tests # CI
 Config: `playwright.config.ts`. Base URL `https://stage.foo.redhat.com:1337` by default, overridable with `PLAYWRIGHT_BASE_URL` or `BASE`. Retries are disabled; workers are single-threaded on CI and parallel locally.
 
 Needs `npm run dev`, plus `E2E_USER` / `E2E_PASSWORD`. Create accounts via [Ethel](https://account-manager-stage.app.eng.rdu2.redhat.com/#create).
+
+Credentialed runs keep certificate validation enabled and allow only approved application and SSO origins. Certificate validation may be disabled only for non-credentialed local runs.
 
 ```bash
 npm run playwright              # All E2E

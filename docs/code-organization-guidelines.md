@@ -4,7 +4,7 @@
 
 Boot order is fixed. Do not invent a second root or skip providers:
 
-```
+```text
 src/index.ts
   → src/bootstrap.tsx          # Jotai, Intl, error boundary, OIDC
     → src/components/RootApp/RootApp.tsx
@@ -15,11 +15,11 @@ Shared types live in `src/@types/types.d.ts`. Utility types may come from the `u
 
 ## New Files
 
-| Kind | Location | Tests |
-|------|----------|--------|
-| Component | `src/components/<Name>/<Name>.tsx` | `src/components/<Name>/<Name>.test.tsx` and, for interactive UI, `cypress/component/<Name>.cy.tsx` |
-| Hook | `src/hooks/use<Name>.ts` | `src/hooks/use<Name>.test.ts` next to the source (there is no `src/hooks/index.ts` barrel) |
-| Atom | `src/state/atoms/<name>Atom.ts` | `src/state/atoms/<name>Atom.test.ts`; seed `src/state/chromeStore.ts` only when the atom needs a store default |
+| Kind      | Location                           | Tests                                                                                                          |
+| --------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Component | `src/components/<Name>/<Name>.tsx` | `src/components/<Name>/<Name>.test.tsx` and, for interactive UI, `cypress/component/<Name>.cy.tsx`             |
+| Hook      | `src/hooks/use<Name>.ts`           | `src/hooks/use<Name>.test.ts` next to the source (there is no `src/hooks/index.ts` barrel)                     |
+| Atom      | `src/state/atoms/<name>Atom.ts`    | `src/state/atoms/<name>Atom.test.ts`; seed `src/state/chromeStore.ts` only when the atom needs a store default |
 
 Keep one primary component per file. Small helpers used only by that parent may live beside it. Prefer a feature folder; add an `index.ts` barrel only when several files are imported from outside the folder.
 

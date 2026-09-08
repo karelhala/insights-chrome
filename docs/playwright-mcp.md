@@ -29,4 +29,4 @@ test('should navigate to application', async ({ page }) => {
 
 SSO login, bundle/app navigation, global filter, Module Federation load failures, permission-gated UI, Unleash flags, WebSocket drawer events.
 
-On a dashboard load, confirm RBAC and entitlements requests succeeded (no 401/403) and that `/apps/chrome/js/fed-mods.json` (or the FEO-generated manifest location) loaded.
+On a dashboard load, assert the expected RBAC and entitlements status for each account and feature. A 403 is valid for permission-gated flows when the UI shows the expected denied state; unexpected 401/403 responses remain failures. Also verify that `/apps/chrome/js/fed-mods.json` (or the FEO-generated manifest location) loaded.
